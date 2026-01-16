@@ -1,6 +1,6 @@
 # Import python packages
 import streamlit as st
-from snowflake.snowpark.context import get_active_session
+#from snowflake.snowpark.context import get_active_session                       # Remove this line for Streamlit Not in Snowflake
 
 # To use a Snowpark COLUMN function named "col" we need to import it into our app
 from snowflake.snowpark.functions import col
@@ -8,31 +8,17 @@ from snowflake.snowpark.functions import col
 # Write directly to the app
 st.title(":cup_with_straw: Customise Your Smoothie :cup_with_straw:")
 st.title(""" Choose the fruits you want in your custom Smoothie!""")
-#st.write(
-#  """Replace this example with your own code!
-#  **And if you're new to Streamlit,** check
-#  out our easy-to-follow guides at
-#  [docs.streamlit.io](https://docs.streamlit.io).
-#  """
-#)
-
-
-#option = st.selectbox(
-#    "What is your favorite fruit?",
-#    ("Banana", "Strawberries", "Peaches"),
-#)
-
-#st.write("Your favorite fruit is:", option)
 
 # Text Input Box
 name_on_order = st.text_input('Name on Smoothie:')
 st.write('The name on your Smoothie will be: ', name_on_order)
 
-
+cnx = st.connection("snowflake")                                                 # This line for Streamlit Not in Snowflake
+session = cns.session()                                                          # This line for Streamlit Not in Snowflake
 
 #Display the Fruit Options List in Your Streamlit in Snowflake (SiS) App. 
 #========================================================================
-session = get_active_session()
+#session = get_active_session()                                                   # Remove this line for Streamlit Not in Snowflake
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
