@@ -14,7 +14,7 @@ name_on_order = st.text_input('Name on Smoothie:')
 st.write('The name on your Smoothie will be: ', name_on_order)
 
 cnx = st.connection("snowflake")                                                 # This line for Streamlit Not in Snowflake
-session = cns.session()                                                          # This line for Streamlit Not in Snowflake
+session = cnx.session()                                                          # This line for Streamlit Not in Snowflake
 
 #Display the Fruit Options List in Your Streamlit in Snowflake (SiS) App. 
 #========================================================================
