@@ -2,7 +2,7 @@
 import streamlit as st
 #from snowflake.snowpark.context import get_active_session                       # Remove this line for Streamlit Not in Snowflake
 
-#New section to display smoothiefroot n utrition information
+#New section to display smoothiefroot nutrition information   API Requests
 import requests
 
 
@@ -28,8 +28,10 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 
 ingredients_list = st.multiselect('Choose up to 5 ingredients:', my_dataframe, max_selections=5)
 
+# API Requests
+#==============
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response)
+st.text(smoothiefroot_response.json())
 
 
 #st.write(ingredients_list)
