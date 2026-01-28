@@ -40,8 +40,8 @@ if ingredients_list:
 
  ingredients_string = ''
 
-#which actually means...
-#for each fruit_chosen in ingredients_list multiselect box: do everything below this line that is indented. 
+ # which actually means...
+ # for each fruit_chosen in ingredients_list multiselect box: do everything below this line that is indented. 
 
  for fruit_chosen in ingredients_list:
     ingredients_string += fruit_chosen + ' '
