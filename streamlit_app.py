@@ -23,8 +23,9 @@ session = cnx.session()                                                         
 #Display the Fruit Options List in Your Streamlit in Snowflake (SiS) App. 
 #========================================================================
 # session = get_active_session()                                                   # Remove this line for Streamlit Not in Snowflake
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
-# st.dataframe(data=my_dataframe, use_container_width=True)
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
+st.dataframe(data=my_dataframe, use_container_width=True)
+st.stop()
 
 ingredients_list = st.multiselect('Choose up to 5 ingredients:', my_dataframe, max_selections=5)
 
