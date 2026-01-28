@@ -2,6 +2,10 @@
 import streamlit as st
 #from snowflake.snowpark.context import get_active_session                       # Remove this line for Streamlit Not in Snowflake
 
+#New section to display smoothiefroot n utrition information
+import requests
+
+
 # To use a Snowpark COLUMN function named "col" we need to import it into our app
 from snowflake.snowpark.functions import col
 
@@ -23,6 +27,10 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
 ingredients_list = st.multiselect('Choose up to 5 ingredients:', my_dataframe, max_selections=5)
+
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
+
 
 #st.write(ingredients_list)
 #st.text(ingredients_list)
